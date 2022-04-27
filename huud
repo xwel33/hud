@@ -19,7 +19,7 @@ local mouse = player:GetMouse()
 local camera = game.Workspace.CurrentCamera
 
 library.theme = {
-    fontsize = 115,
+    fontsize = 15,
     titlesize = 18,
     font = Enum.Font.Code,
     background = "rbxassetid://5553946656",
@@ -40,8 +40,8 @@ library.theme = {
     topcolor2 = Color3.fromRGB(30, 30, 30),
     buttoncolor = Color3.fromRGB(49, 49, 49),
     buttoncolor2 = Color3.fromRGB(39, 39, 39),
-    itemscolor = Color3.fromRGB(0, 255, 0),
-    itemscolor2 = Color3.fromRGB(0, 255, 0)
+    itemscolor = Color3.fromRGB(209, 209, 209),
+    itemscolor2 = Color3.fromRGB(209, 209, 209)
 }
 
 function library:CreateWatermark(name, position)
