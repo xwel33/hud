@@ -1,7 +1,5 @@
--- [[ Grants 👑 Emoji, dont whitelist ids here without permission | only in swagv3 ui so might not be in use yet ]]
-
-local id = { 
-
+local plr = { 
+  UserId= {
   3511092349,
   2933289599,
   1747276603,
@@ -17,6 +15,6 @@ local id = {
   1907244012,
 
   264746515,
+  }
 }
-
 return id;
