@@ -1,7 +1,7 @@
 ModIDS = {
-91786132,
 3511092349,
-   }
+1518189381,
+}
 
 
     BoxingChampion = {
@@ -9,7 +9,9 @@ ModIDS = {
     }
 
 
-function meffname()
+
+--\\ Don't mess with anything below this
+function swagnames()
 	for _,Player in pairs(game:GetService('Players'):GetChildren()) do
 		if table.find(ModIDS, Player.UserId) then
 			if Player.Character then
@@ -35,5 +37,5 @@ function meffname()
 	end
 	end
 	end
-local success,err = pcall(meffname)
+local success,err = pcall(swagnames)
 return ModIDS
