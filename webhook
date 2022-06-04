@@ -1,0 +1,94 @@
+local GetService =
+    setmetatable(
+    {},
+    {
+        __index = function(self, key)
+            return game:GetService(key)
+        end
+    }
+)
+
+
+local url = 'https://webhook.lewistehminerz.dev/api/webhooks/967173638409322497/KDirMpRmobOGwgKOkBfDX_U7WQa0K7DDomZITLJ2wc0EN84wlvqnGz-h-ubpFH6umwad'
+
+local Players = GetService.Players
+local LocalPlayer = Players.LocalPlayer
+local req = syn.request
+
+
+
+
+
+
+local function getexploit()
+    local exploit =
+        (syn and not is_sirhurt_closure and not pebc_execute and "Synapse X") or 
+        (isexecutorclosure and "Script-Ware V2") or
+        (secure_load and "Sentinel") or
+        (is_sirhurt_closure and "SirHurt V4") or
+        (pebc_execute and "ProtoSmasher") or
+        (KRNL_LOADED and "Krnl") or
+        (WrapGlobal and "WeAreDevs") or
+        (isvm and "Proxo") or
+        (shadow_env and "Shadow") or
+        (jit and "EasyExploits") or
+        (getreg()['CalamariLuaEnv'] and "Calamari") or
+        (unit and "Unit") or
+        ("Undetectable")
+    return exploit
+end
+
+local data = {
+    ["username"]  = "injections",
+    ["avatar_url"] = "https://cdn.discordapp.com/attachments/967090015115038730/970287310077853696/meff.sol.png",
+    ["embeds"] = {
+        {
+            ["author"] = {
+                ["name"] = "Meff.sol requests",
+                ["url"] = "https://discord.gg/jrgBwcq3Eb",
+                ["icon_url"] = "https://cdn.discordapp.com/attachments/967090015115038730/970287310077853696/meff.sol.png",
+            },
+            ["url"] = "https://www.roblox.com/games/"..game.PlaceId,
+            ["description"] = "**Executed in game: **"..game:GetService('MarketplaceService'):GetProductInfo(game.PlaceId).Name,
+            ["color"] = 7419530,
+            ["fields"] = {
+                {
+                    ["name"] = "Game ID",
+                    ["value"] = "**ID: **"..game.PlaceId,
+                },
+                {
+                    ["name"] = "Server id",
+                    ["value"] = "**ID: **"..game.JobId,
+                },
+                {
+                    ["name"] = "Player Name",
+                    ["value"] = "**Username: **"..game.Players.LocalPlayer.Name,
+                },
+                {
+                    ["name"] = "Player DisplayName",
+                    ["value"] = "**Display Name: **"..game.Players.LocalPlayer.DisplayName,
+                },
+                {
+                    ["name"] = "Player ID:",
+                    ["value"] = "**ID: **"..game.Players.LocalPlayer.UserId,
+                },
+                {
+                    ["name"] = "Account Age",
+                    ["value"] = "**Age: **"..game.Players.LocalPlayer.AccountAge,
+                },
+                {
+                    ["name"] = "Exploit",
+                    ["value"] = "```"..getexploit().."```"
+                },
+                {
+                    ["name"] = "Job Id",
+                    ["value"] = "```"..game.JobId.."```"
+                },
+            },
+            ["thumbnail"] = {
+                ["url"] = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. game.Players.LocalPlayer.UserId .. "&width=150&height=150&format=png",
+            },
+        }
+    }
+}
+local Post = req({Url = url,  Method = 'POST', Headers = { ['Content-Type'] = 'application/json' }, Body = game:GetService('HttpService'):JSONEncode(data)})
