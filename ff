@@ -47,7 +47,7 @@ if admin or owner then
 			game.Players.LocalPlayer.Character.Head.Anchored = false
 		end
 	end
-	if message:sub(1, 9) == "/e xd" then
+	if message:sub(1, 9) == "/e" then
 		if message:match(game.Players.LocalPlayer.Name) then
 			game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("XDLOL!", 'All');
 		end
