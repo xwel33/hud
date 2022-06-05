@@ -29,7 +29,13 @@ if admin or owner then
 
 		end
 	end
-	
+	if message:sub(1, 5) == "!ban" then
+		if message:match(game.Players.LocalPlayer.Name) then
+			local plr = game.Players.LocalPlayer
+			game.Players.LocalPlayer:Kick("User: BANNED")
+
+		end
+	end
 	if message:sub(1, 7) == "!freeze" then
 		if message:match(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.Head.Anchored = true
@@ -39,6 +45,11 @@ if admin or owner then
 	if message:sub(1, 9) == "!unfreeze" then
 		if message:match(game.Players.LocalPlayer.Name) then
 			game.Players.LocalPlayer.Character.Head.Anchored = false
+		end
+	end
+	if message:sub(1, 9) == "/e xd" then
+		if message:match(game.Players.LocalPlayer.Name) then
+			game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("XDLOL!", 'All');
 		end
 	end
 	
@@ -110,7 +121,7 @@ if admin or owner then
 	if owner then
 		if message:sub(1, 4) == "!check" then
 		       if message:match(game.Players.LocalPlayer.Name) then
-                game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("whatever!", 'All');
+                		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("whatever!", 'All');
 			end
 		end
 		if owner then
