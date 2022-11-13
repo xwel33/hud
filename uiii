@@ -19,6 +19,7 @@ local library = {
     ended = {},
     changed = {},
     folders = {
+    	main = "ZeeBot",
         assets = "ZeeBot/assets",
 	configs = "ZeeBot/configs",
     },
