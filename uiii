@@ -4282,6 +4282,92 @@ do
         return colorpicker
     end
     --
+    function sections:ConfigBox(info)
+        local info = info or {}
+        --
+        local window = self.window
+        local page = self.page
+        local section = self
+        --
+        local configLoader = {axis = section.currentAxis, current = 1, buttons = {}}
+        --
+        local configLoader_outline = utility:Create("Frame", {Vector2.new(4,configLoader.axis), section.section_frame}, {
+            Size = utility:Size(1, -8, 0, 148, section.section_frame),
+            Position = utility:Position(0, 4, 0, configLoader.axis, section.section_frame),
+            Color = theme.outline,
+            Visible = page.open
+        }, section.visibleContent)
+        --
+        local configLoader_inline = utility:Create("Frame", {Vector2.new(1,1), configLoader_outline}, {
+            Size = utility:Size(1, -2, 1, -2, configLoader_outline),
+            Position = utility:Position(0, 1, 0, 1, configLoader_outline),
+            Color = theme.inline,
+            Visible = page.open
+        }, section.visibleContent)
+        --
+        local configLoader_frame = utility:Create("Frame", {Vector2.new(1,1), configLoader_inline}, {
+            Size = utility:Size(1, -2, 1, -2, configLoader_inline),
+            Position = utility:Position(0, 1, 0, 1, configLoader_inline),
+            Color = theme.light_contrast,
+            Visible = page.open
+        }, section.visibleContent)
+        --
+        local configLoader_gradient = utility:Create("Image", {Vector2.new(0,0), configLoader_frame}, {
+            Size = utility:Size(1, 0, 1, 0, configLoader_frame),
+            Position = utility:Position(0, 0, 0 , 0, configLoader_frame),
+            Transparency = 0.5,
+            Visible = page.open
+        }, section.visibleContent)
+        --
+        for i=1, 8 do
+            local config_title = utility:Create("TextLabel", {Vector2.new(configLoader_frame.Size.X/2,2 + (18 * (i-1))), configLoader_frame}, {
+                Text = "Config-Slot: "..tostring(i),
+                Size = theme.textsize,
+                Font = theme.font,
+                Color = i == 1 and theme.accent or theme.textcolor,
+                OutlineColor = theme.textborder,
+                Center = true,
+                Position = utility:Position(0.5, 0, 0, 2 + (18 * (i-1)), configLoader_frame),
+                Visible = page.open
+            }, section.visibleContent)
+            --
+            configLoader.buttons[i] = config_title
+        end
+        --
+        utility:LoadImage(configLoader_gradient, "gradient", "https://i.imgur.com/5hmlrjX.png")
+        --
+        function configLoader:Refresh()
+            for i,v in pairs(configLoader.buttons) do
+                v.Color = i == configLoader.current and theme.accent or theme.textcolor
+            end
+        end
+        --
+        function configLoader:Get()
+            return configLoader.current
+        end
+        --
+        function configLoader:Set(current)
+            configLoader.current = current
+            configLoader:Refresh()
+        end
+        --
+        library.began[#library.began + 1] = function(Input)
+            if Input.UserInputType == Enum.UserInputType.MouseButton1 and configLoader_outline.Visible and window.isVisible and utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + configLoader.axis, section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + configLoader.axis + 148}) and not window:IsOverContent() then
+                for i=1, 8 do
+                    if utility:MouseOverDrawing({section.section_frame.Position.X, section.section_frame.Position.Y + configLoader.axis + 2 + (18 * (i-1)), section.section_frame.Position.X + section.section_frame.Size.X, section.section_frame.Position.Y + configLoader.axis + 2 + (18 * (i-1)) + 18}) then
+                        configLoader.current = i
+                        configLoader:Refresh()
+                    end
+                end
+            end
+        end
+        --
+        window.pointers["configbox"] = configLoader
+        section.currentAxis = section.currentAxis + 148 + 4
+        section:Update()
+        --
+        return configLoader
+    end
     function sections:Box(info)
         local info = info or {}
         --
