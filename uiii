@@ -20,6 +20,7 @@ local library = {
     changed = {},
     folders = {
         assets = "ZeeBot/assets",
+	configs = "ZeeBot/configs",
     },
     shared = {
         initialized = false,
