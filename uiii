@@ -747,6 +747,17 @@ do
                 Position = utility:Position(0, 2 + 6, 0, 4, watermark_outline),
                 Visible = window.watermark.visible
             })
+	    
+            local watermark_Image = utility:Create("ImageLabel", {Vector2.new(1,1), watermark_frame}, {
+                Size = utility:Size(1, 0, 1, 0, watermark_frame),
+                Position = utility:Position(0, 0, 0, 0, watermark_frame),
+                Transparency = 1,
+                ZIndex = 63,
+                Hidden = true,
+                Visible = window.watermark.visible,
+	        Image = "http://www.roblox.com/asset/?id=11587554812"
+            })
+	    
             --
             local watermark__gradient = utility:Create("Image", {Vector2.new(0, 0), watermark_frame}, {
                 Size = utility:Size(1, 0, 1, 0, watermark_frame),
